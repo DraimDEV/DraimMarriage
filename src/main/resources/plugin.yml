@@ -1,0 +1,4 @@
+name: DraimMarriage
+version: '${version}'
+main: ru.draimdev.draimmarriage.DraimMarriage
+api-version: 1.18
