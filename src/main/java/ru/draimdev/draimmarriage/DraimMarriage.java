@@ -5,10 +5,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 import ru.draimdev.draimmarriage.Commands.MainCommands;
 import ru.draimdev.draimmarriage.Commands.TabComplete;
 
+import java.util.List;
+
 public final class DraimMarriage extends JavaPlugin
 {
     public static FileConfiguration config;
     private static DraimMarriage instance;
+
+    public static List<String> getConfigStringList(String path) {
+        return config.getStringList(path);
+    }
 
     public static DraimMarriage getInstance() {
         return instance;
