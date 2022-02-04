@@ -30,4 +30,9 @@ public class MessageConfig {
             }
         }
     }
+
+    public void reloadCFG() {
+        this.f = new File(DraimMarriage.getInstance().getDataFolder(), "config.yml");
+        this.fc = YamlConfiguration.loadConfiguration(this.f);
+    }
 }
