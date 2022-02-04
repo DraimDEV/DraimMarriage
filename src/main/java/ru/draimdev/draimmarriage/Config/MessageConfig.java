@@ -26,7 +26,7 @@ public class MessageConfig {
                 Bukkit.getServer().getConsoleSender().sendMessage("[DraimMarriage] Файл локализации успешно создан.");
             }
             catch (IOException e) {
-                Bukkit.getServer().getConsoleSender().sendMessage("[DraimMarriage]");
+                Bukkit.getServer().getConsoleSender().sendMessage("[DraimMarriage] Произошла ошибка при создании файла локализации");
             }
         }
     }
@@ -51,7 +51,7 @@ public class MessageConfig {
         try {
             this.getCFG().save(this.f);
         } catch (IOException e) {
-            Bukkit.getConsoleSender().sendMessage("" + this.f);
+            Bukkit.getConsoleSender().sendMessage("Ошибка в сохранении файла локализации:" + this.f);
         }
     }
 
