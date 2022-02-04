@@ -6,8 +6,8 @@ author: DraimGooSe
 commands:
   draimmarriage:
     description: Main Command.
-    aliases: [dm, marry, dmarry]
+    aliases: [marry, dmarry]
 
 permissions:
   draimmarriage.reload:
-    description: Права на команду /dm reload
+    description: Права на команду /marry reload
