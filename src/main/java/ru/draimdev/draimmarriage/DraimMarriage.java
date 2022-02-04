@@ -28,6 +28,7 @@ public final class DraimMarriage extends JavaPlugin
     @Override
     public void onEnable() {
         instance = this;
+        initCMDs();
         this.saveDefaultConfig();
         config = getConfig();
         MessageConfig.getMSG().setUp();
