@@ -46,4 +46,16 @@ public class MessageConfig {
     public static MessageConfig getMSG() {
         return MessageConfig.mc;
     }
+
+    public void saveCFG() {
+        try {
+            this.getCFG().save(this.f);
+        } catch (IOException e) {
+            Bukkit.getConsoleSender().sendMessage("" + this.f);
+        }
+    }
+
+    static {
+        MessageConfig.mc = new MessageConfig();
+    }
 }
