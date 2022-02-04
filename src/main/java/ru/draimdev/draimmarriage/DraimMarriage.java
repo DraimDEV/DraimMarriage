@@ -1,17 +1,33 @@
 package ru.draimdev.draimmarriage;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import ru.draimdev.draimmarriage.Commands.MainCommands;
+import ru.draimdev.draimmarriage.Commands.TabComplete;
 
-public final class DraimMarriage extends JavaPlugin {
+public final class DraimMarriage extends JavaPlugin
+{
+    public static FileConfiguration config;
+    private static DraimMarriage instance;
+
+    public static DraimMarriage getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
-
+        instance = this;
+        config = getConfig();
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        this.getLogger().info("Плагин успешно отключен.");
+
+    }
+
+    public void initCMDs() {
+        getCommand("draimmarriage").setExecutor(new MainCommands(this));
+        getCommand("draimmarriage").setTabCompleter(new TabComplete());
     }
 }
