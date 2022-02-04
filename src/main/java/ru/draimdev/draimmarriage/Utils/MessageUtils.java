@@ -41,7 +41,7 @@ public class MessageUtils {
 
     // Префикс лога в консоли.
     public static void sendLog(String log) {
-        Logger.getLogger("DraimDonate").info(color(log));
+        Logger.getLogger("DraimMarriage").info(color(log));
     }
     public static void sendUsefulMSG(Player p, String path) {
         String messages = MessageConfig.getMSG().getCFG().getString(path);
