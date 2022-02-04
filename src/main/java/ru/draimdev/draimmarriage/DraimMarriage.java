@@ -12,6 +12,10 @@ public final class DraimMarriage extends JavaPlugin
     public static FileConfiguration config;
     private static DraimMarriage instance;
 
+    // Подхват всех настроек из config.yml
+    public static String getConfigString(String path) {
+        return config.getString(path);
+    }
     public static List<String> getConfigStringList(String path) {
         return config.getStringList(path);
     }
