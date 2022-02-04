@@ -42,4 +42,8 @@ public class MessageConfig {
         }
         return this.fc;
     }
+
+    public static MessageConfig getMSG() {
+        return MessageConfig.mc;
+    }
 }
