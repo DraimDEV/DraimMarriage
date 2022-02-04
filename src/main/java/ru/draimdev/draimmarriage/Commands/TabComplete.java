@@ -14,7 +14,6 @@ public class TabComplete implements TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (completions.isEmpty()) {
             completions.add("reload");
-            completions.add("");
         }
 
         List<String> fit = new ArrayList<>();
