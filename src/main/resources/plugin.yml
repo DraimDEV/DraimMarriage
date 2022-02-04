@@ -2,3 +2,12 @@ name: DraimMarriage
 version: '${version}'
 main: ru.draimdev.draimmarriage.DraimMarriage
 api-version: 1.18
+author: DraimGooSe
+commands:
+  draimmarriage:
+    description: Main Command.
+    aliases: [dm, marry, dmarry]
+
+permissions:
+  draimmarriage.reload:
+    description: Права на команду /dm reload
