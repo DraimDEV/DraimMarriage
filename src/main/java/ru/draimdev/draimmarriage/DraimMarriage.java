@@ -4,6 +4,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.draimdev.draimmarriage.Commands.MainCommands;
 import ru.draimdev.draimmarriage.Commands.TabComplete;
+import ru.draimdev.draimmarriage.Config.MessageConfig;
 
 import java.util.List;
 
@@ -27,7 +28,9 @@ public final class DraimMarriage extends JavaPlugin
     @Override
     public void onEnable() {
         instance = this;
+        this.saveDefaultConfig();
         config = getConfig();
+        MessageConfig.getMSG().setUp();
     }
 
     @Override
