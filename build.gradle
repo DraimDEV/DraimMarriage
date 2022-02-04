@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'ru.draimdev.DraimMarriage'
-version = '1.0-SNAPSHOT'
+version = '1.0.21'
 
 repositories {
     mavenCentral()
