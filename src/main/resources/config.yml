@@ -1,0 +1,8 @@
+Messages: #chat! actionbar! title!
+  Another:
+    Plugin-Reload: "chat! &8(&6&l!&8) &7Плагин успешно перезагружен!"
+    No-Permission: "chat! &8(&c&l!&8) &7Не достаточно прав!"
+    NoArg: "chat! &8(&6&l!&8) &7Ты ввёл неправильную суб-команду!"
+  Help:
+    - "&fПомощь по свадьбам"
+    - "&8|  &fПерезагрузить плагин - &7/&2dm reload"
