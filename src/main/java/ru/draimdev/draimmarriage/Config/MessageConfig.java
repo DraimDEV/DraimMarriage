@@ -35,4 +35,11 @@ public class MessageConfig {
         this.f = new File(DraimMarriage.getInstance().getDataFolder(), "config.yml");
         this.fc = YamlConfiguration.loadConfiguration(this.f);
     }
+
+    public FileConfiguration getCFG() {
+        if (this.fc == null) {
+            this.reloadCFG();
+        }
+        return this.fc;
+    }
 }
