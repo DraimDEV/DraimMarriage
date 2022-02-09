@@ -1,0 +1,5 @@
+name: DMLIB Spigot
+version: '${version}'
+main: ru.draimdev.dmlibspigot.DMLIBSpigot
+api-version: 1.18
+authors: [ DraimGooSe ]
