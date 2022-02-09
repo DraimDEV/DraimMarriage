@@ -3,13 +3,6 @@ version: '${version}'
 main: ru.draimdev.draimmarriage.DraimMarriage
 api-version: 1.18
 author: DraimGooSe
-depend:
-  - eco
 commands:
   draimmarriage:
     description: Main Command.
-    aliases: [marry, dmarry]
-
-permissions:
-  draimmarriage.reload:
-    description: Права на команду /marry reload
