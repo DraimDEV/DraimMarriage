@@ -3,6 +3,7 @@ version: '${version}'
 main: ru.draimdev.draimmarriage.DraimMarriage
 api-version: 1.18
 author: DraimGooSe
+softdepend: [PlaceholderAPI]
 commands:
   draimmarriage:
     description: Main Command.
