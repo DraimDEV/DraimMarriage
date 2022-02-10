@@ -1,4 +1,10 @@
 package ru.draimdev.dmlibspigot.Util
 
-class NumberUtils {
+fun isInt(number: String): Boolean {
+    return try {
+        number.toInt()
+        true
+    } catch (e: NumberFormatException) {
+        false
+    }
 }
