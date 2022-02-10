@@ -31,4 +31,10 @@ class ConfigManager(private val pl: JavaPlugin, private val fileName: String) {
     private fun pathNotFound(path: String) { // Если не нашло путь - отпишет что ты еблан
         pl.logger.warning("Путь $path не был найден в $fileName")
     }
+
+    private fun isNot(type: String, name: String, path: String) { // Если не является назначеным типом
+        pl.logger.warning("$name не является $type в файла $fileName ($path)")
+    }
+
+
 }
