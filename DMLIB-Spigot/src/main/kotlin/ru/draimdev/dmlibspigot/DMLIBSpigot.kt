@@ -37,6 +37,7 @@ class DMLIBSpigot : JavaPlugin() {
         setupAdventure()
         setupConfig()
         setupDatabase()
+        setupManagers()
     }
 
     private fun setupAdventure() {
@@ -52,10 +53,13 @@ class DMLIBSpigot : JavaPlugin() {
         TitleType.load(ConfigManager(this, "titles.yml"))
     }
 
-
     private fun setupDatabase() {
         dataSource = DataSource(configManager)
         dataSource.initPool("DMLIB-Spigot-Pool")
         playerQuery = PlayerQuery(dataSource, this)
+    }
+
+    private fun setupManagers() {
+        guiManager = GUIManagers()
     }
 }
