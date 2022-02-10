@@ -8,7 +8,7 @@ import java.util.*
 enum class Lang(val defaultValue: String) {
     TIME_FORMAT_DAYS("%d д, %02d ч. %02d м. %02d с."),
     TIME_FORMAT_HOURS("%02d ч. %02d м. %02d с."),
-    TIME_FORMAT_MINUTES("00 ч. %02d м. %02d с."),
+    TIME_FORMAT_MINUTES("00 ч. %02d м. %02d с.");
 
     companion object {
         private val lang = EnumMap<Lang, String>(Lang::class.java)
