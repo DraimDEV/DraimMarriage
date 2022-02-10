@@ -8,7 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.plugin.java.JavaPlugin
 
-class GUIListeners(val pl: JavaPlugin, val mngr: GUIManager) : Listener {
+class GUIListeners(val pl: JavaPlugin, val mngr: GUIManagers) : Listener {
 
     @EventHandler
     fun onClose(event: InventoryCloseEvent) {

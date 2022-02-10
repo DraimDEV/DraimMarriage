@@ -16,7 +16,6 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import ru.draimdev.dmlibspigot.ActionBar.ActionBarBuilder
 import ru.draimdev.dmlibspigot.ActionBar.DMActionBar
-import ru.draimdev.dmlibspigot.Item.ItemBuilder
 import ru.draimdev.dmlibspigot.Sound.DMSound
 import ru.draimdev.dmlibspigot.Sound.SoundBuilder
 import ru.draimdev.dmlibspigot.Title.DMTitle
@@ -219,36 +218,6 @@ class ConfigManager(private val pl: JavaPlugin, private val fileName: String) {
                 return ItemStack(Material.STONE)
             }
             return itemStack
-        }
-        pathNotFound(path)
-        return ItemStack(Material.STONE)
-    }
-
-    fun getHead(path: String): ItemStack {
-        if (config.isSet(path)) {
-            val owner = getString("$path.head-owner")
-            var name = Component.text("Head")
-            var amount = 1
-            val lore: MutableList<Component> = ArrayList()
-            if (config.isSet("$path.amount")) {
-                amount = getInt("$path.amount")
-            }
-            if (config.isSet("$path.name")) {
-                name = Component.text(getString("$path.name"))
-            }
-            if (config.isSet("$path.lore")) {
-                getStringList("$path.lore").forEach { lore.add(Component.text(it)) }
-            }
-            val head: ItemStack = ItemBuilder(XMaterial.PLAYER_HEAD)
-                .withName(name)
-                .withAmount(amount)
-                .withLore(lore)
-                .withOwner(owner)
-                .create()
-            if (config.isSet("$path.enchantments")) {
-                head.addEnchantments(getEnchantments("$path.enchantments"))
-            }
-            return head
         }
         pathNotFound(path)
         return ItemStack(Material.STONE)

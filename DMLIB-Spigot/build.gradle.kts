@@ -47,7 +47,6 @@ dependencies {
     implementation("xyz.xenondevs:particle:1.5.1")
     implementation("com.github.cryptomorin:XSeries:7.9.1.1")
 
-    implementation("net.kyori:adventure-api:4.9.3")
     implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
     implementation("net.kyori:adventure-platform-bukkit:4.0.1")
 
@@ -85,5 +84,5 @@ tasks.named<Jar>("jar") {
 }
 
 tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "16"
+    kotlinOptions.jvmTarget = "11"
 }
