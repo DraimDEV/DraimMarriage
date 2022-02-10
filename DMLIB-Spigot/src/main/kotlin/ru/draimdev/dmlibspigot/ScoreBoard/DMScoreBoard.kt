@@ -8,7 +8,7 @@ import org.bukkit.scoreboard.Scoreboard
 class DMScoreBoard(val title: String, val lines: MutableList<String>) {
 
     fun toScoreboard() : Scoreboard {
-        val scoreBoard = Bukkit.getScoreboardManager().newScoreboard
+        val scoreBoard = Bukkit.getScoreboardManager()!!.newScoreboard
 
         val objective = scoreBoard.registerNewObjective(title, "", title)
         objective.displaySlot = DisplaySlot.SIDEBAR
