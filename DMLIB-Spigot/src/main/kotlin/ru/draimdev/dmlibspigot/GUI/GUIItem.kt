@@ -1,4 +1,5 @@
 package ru.draimdev.dmlibspigot.GUI
 
-class GUIItem {
-}
+import org.bukkit.inventory.ItemStack
+
+class GUIItem(val itemStack: ItemStack, val clickRunnable: () -> Unit = null)
