@@ -1,8 +1,10 @@
 package ru.draimdev.dmlibspigot.Config
 
+import net.md_5.bungee.api.ChatColor
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
+import ru.draimdev.dmlibspigot.Util.colorString
 import java.io.File
 import java.io.IOException
 
@@ -36,5 +38,13 @@ class ConfigManager(private val pl: JavaPlugin, private val fileName: String) {
         pl.logger.warning("$name не является $type в файла $fileName ($path)")
     }
 
+    fun getString(path: String, def: String = "${ChatColor.RED}$path"): String {
+        return if (config.isSet(path)) {
+            colorString(config.getString(path, def)!!)
+        } else {
+            pathNotFound(path)
+            def
+        }
+    }
 
 }
