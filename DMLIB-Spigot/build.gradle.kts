@@ -74,10 +74,10 @@ tasks.named<ShadowJar>("shadowJar") {
 
     archiveName = "$baseName-$version.$extension"
 
-    relocate("com.cryptomorin.xseries", "me.pljr.pljrapispigot.xseries")
-    relocate("xyz.xenondevs", "me.pljr.pljrapispigot.xenondevs")
-    relocate("org.bstats", "me.pljr.pljrapispigot.bstats")
-    relocate("net.kyori", "me.pljr.pljrapispigot.kyori")
+    relocate("com.cryptomorin.xseries", "ru.draimdev.dmlibspigot.xseries")
+    relocate("xyz.xenondevs", "ru.draimdev.dmlibspigot.xenondevs")
+    relocate("org.bstats", "ru.draimdev.dmlibspigot.bstats")
+    relocate("net.kyori", "ru.draimdev.dmlibspigot.kyori")
 }
 
 tasks.named<Jar>("jar") {
