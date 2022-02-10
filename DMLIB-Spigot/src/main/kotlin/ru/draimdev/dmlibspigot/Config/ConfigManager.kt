@@ -5,9 +5,7 @@ import com.cryptomorin.xseries.XMaterial
 import com.cryptomorin.xseries.XSound
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
-import org.bukkit.ChatColor
-import org.bukkit.Material
-import org.bukkit.Sound
+import org.bukkit.*
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
@@ -330,5 +328,24 @@ class ConfigManager(private val pl: JavaPlugin, private val fileName: String) {
     fun seеDMActionBar(path: String, actionBar: DMActionBar) {
         config["$path.message"] = actionBar.message
         config["$path.duration"] = actionBar.duration
+    }
+
+    fun getWorld(path: String): World {
+        val worldName = getString(path)
+        if (Bukkit.getWorld(worldName) == null) {
+            isNot("World", worldName, path)
+            return Bukkit.getWorlds()[0]
+        }
+        return Bukkit.getWorld(worldName)!!
+    }
+
+    fun getLocation(path: String): Location {
+        val world: World = getWorld("$path.world")
+        val x = getDouble("$path.x")
+        val y = getDouble("$path.y")
+        val z = getDouble("$path.z")
+        val yaw = getFloat("$path.yaw")
+        val pitch = getFloat("$path.pitch")
+        return Location(world, x, y, z, yaw, pitch)
     }
 }
