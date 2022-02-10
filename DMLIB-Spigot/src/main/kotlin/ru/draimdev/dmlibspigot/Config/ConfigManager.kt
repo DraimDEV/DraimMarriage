@@ -1,6 +1,6 @@
 package ru.draimdev.dmlibspigot.Config
 
-import net.md_5.bungee.api.ChatColor
+import org.bukkit.ChatColor
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
