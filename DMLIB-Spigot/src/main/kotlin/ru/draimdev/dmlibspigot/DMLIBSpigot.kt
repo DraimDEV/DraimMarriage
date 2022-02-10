@@ -36,6 +36,7 @@ class DMLIBSpigot : JavaPlugin() {
         server.pluginManager.callEvent(StartupEvent(this))
         setupAdventure()
         setupConfig()
+        setupDatabase()
     }
 
     private fun setupAdventure() {
@@ -49,5 +50,12 @@ class DMLIBSpigot : JavaPlugin() {
         Lang.load(ConfigManager(this, "lang.yml"))
         SoundType.load(ConfigManager(this, "sounds.yml"))
         TitleType.load(ConfigManager(this, "titles.yml"))
+    }
+
+
+    private fun setupDatabase() {
+        dataSource = DataSource(configManager)
+        dataSource.initPool("DMLIB-Spigot-Pool")
+        playerQuery = PlayerQuery(dataSource, this)
     }
 }
