@@ -47,6 +47,8 @@ dependencies {
     implementation("xyz.xenondevs:particle:1.5.1")
     implementation("com.github.cryptomorin:XSeries:7.9.1.1")
 
+    implementation("net.kyori:adventure-api:4.9.3")
+
 
     implementation("org.bstats:bstats-bukkit:2.2.1")
     implementation("com.zaxxer:HikariCP:4.0.1")
