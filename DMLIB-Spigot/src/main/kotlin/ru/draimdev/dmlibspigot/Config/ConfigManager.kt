@@ -1,6 +1,5 @@
 package ru.draimdev.dmlibspigot.Config
 
-import com.cryptomorin.xseries.SkullUtils
 import com.cryptomorin.xseries.XEnchantment
 import com.cryptomorin.xseries.XMaterial
 import com.cryptomorin.xseries.XSound
@@ -9,6 +8,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.Sound
+import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.enchantments.Enchantment
@@ -16,6 +16,8 @@ import org.bukkit.entity.EntityType
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
+import ru.draimdev.dmlibspigot.ActionBar.ActionBarBuilder
+import ru.draimdev.dmlibspigot.ActionBar.DMActionBar
 import ru.draimdev.dmlibspigot.Item.ItemBuilder
 import ru.draimdev.dmlibspigot.Sound.DMSound
 import ru.draimdev.dmlibspigot.Sound.SoundBuilder
@@ -305,5 +307,28 @@ class ConfigManager(private val pl: JavaPlugin, private val fileName: String) {
         config["$path.type"] = sound.type.toString()
         config["$path.volume"] = sound.volume
         config["$path.pitch"] = sound.pitch
+    }
+
+    fun getConfigurationSection(path: String): ConfigurationSection? {
+        if (config.isSet(path)) {
+            return config.getConfigurationSection(path)
+        }
+        pathNotFound(path)
+        return null
+    }
+
+    fun getDMActionBar(path: String): DMActionBar {
+        if (config.isSet(path)) {
+            val message = getString("$path.message")
+            val duration = getLong("$path.duration")
+            return DMActionBar(message, duration)
+        }
+        pathNotFound(path)
+        return ActionBarBuilder(path).create()
+    }
+
+    fun seеDMActionBar(path: String, actionBar: DMActionBar) {
+        config["$path.message"] = actionBar.message
+        config["$path.duration"] = actionBar.duration
     }
 }
