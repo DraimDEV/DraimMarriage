@@ -49,6 +49,7 @@ dependencies {
 
     implementation("net.kyori:adventure-api:4.9.3")
     implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
+    implementation("net.kyori:adventure-platform-bukkit:4.0.1")
 
     implementation("org.bstats:bstats-bukkit:2.2.1")
     implementation("com.zaxxer:HikariCP:4.0.1")
