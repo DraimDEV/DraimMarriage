@@ -1,0 +1,23 @@
+mysql:
+  host: "127.0.0.1"
+  port: "3306"
+  database: "db"
+  username: "root"
+  password: ""
+
+mysql-settings:
+  maximumPoolSize: 16
+  maximumIdle: 2
+  maxLifeTime: 1800000
+  connectionTimeout: 30000
+  cachePrepStmts: true
+  prepStmtCacheSize: 250
+  prepStmtCacheSqlLimit: 2048
+
+settings:
+  sounds: true
+  teleport-delay: 7
+  vault: false
+  holograms: false
+  placeholders: false
+  disabled-messages: true
