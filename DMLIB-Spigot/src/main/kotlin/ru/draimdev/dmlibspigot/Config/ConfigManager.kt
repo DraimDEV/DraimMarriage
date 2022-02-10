@@ -13,9 +13,14 @@ import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.EntityType
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import ru.draimdev.dmlibspigot.Item.ItemBuilder
+import ru.draimdev.dmlibspigot.Sound.DMSound
+import ru.draimdev.dmlibspigot.Sound.SoundBuilder
+import ru.draimdev.dmlibspigot.Title.DMTitle
+import ru.draimdev.dmlibspigot.Title.TitleBuilder
 import ru.draimdev.dmlibspigot.Util.colorString
 import ru.draimdev.dmlibspigot.Util.isInt
 import java.io.File
@@ -249,10 +254,56 @@ class ConfigManager(private val pl: JavaPlugin, private val fileName: String) {
         return ItemStack(Material.STONE)
     }
 
+    fun getDamageCause(path: String): EntityDamageEvent.DamageCause {
+        if (config.isSet(path)) {
+            val causeName = getString(path)
+            for (cause in EntityDamageEvent.DamageCause.values()) {
+                if (cause.toString().equals(causeName, true)) {
+                    return cause
+                }
+            }
+            isNot("DamageCause", causeName, path)
+            return EntityDamageEvent.DamageCause.VOID
+        }
+        pathNotFound(path)
+        return EntityDamageEvent.DamageCause.VOID
+    }
 
+    fun getDMTitle(path: String): DMTitle {
+        if (config.isSet(path)) {
+            val title = Component.text(getString("$path.title"))
+            val subtitle = Component.text(getString("$path.subtitle"))
+            val inTime = getLong("$path.in")
+            val stayTime = getLong("$path.stay")
+            val outTime = getLong("$path.out")
+            return DMTitle(title, subtitle, inTime, stayTime, outTime)
+        }
+        pathNotFound(path)
+        return TitleBuilder(Component.text("Title"), Component.text("Was not found!")).create()
+    }
 
+    fun setDMTitle(path: String, title: DMTitle) {
+        config["$path.title"] = MiniMessage.get().serialize(title.title)
+        config["$path.subtitle"] = MiniMessage.get().serialize(title.subtitle)
+        config["$path.in"] = title.inTime
+        config["$path.stay"] = title.stayTime
+        config["$path.out"] = title.outTime
+    }
 
+    fun getDMSound(path: String): DMSound {
+        if (config.isSet(path)) {
+            val type = getSound("$path.type")
+            val volume = getFloat("$path.volume")
+            val pitch = getFloat("$path.pitch")
+            return DMSound(type, volume, pitch)
+        }
+        pathNotFound(path)
+        return SoundBuilder(XSound.ENTITY_BAT_DEATH).create()
+    }
 
-
-
+    fun setDMSound(path: String, sound: DMSound) {
+        config["$path.type"] = sound.type.toString()
+        config["$path.volume"] = sound.volume
+        config["$path.pitch"] = sound.pitch
+    }
 }
