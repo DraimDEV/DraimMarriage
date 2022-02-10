@@ -4,13 +4,16 @@ import org.bukkit.plugin.java.JavaPlugin
 import ru.draimdev.dmlibspigot.DataBase.DataSource
 import net.kyori.adventure.platform.bukkit.BukkitAudiences
 import net.milkbowl.vault.economy.Economy
+import org.bukkit.Bukkit
 import ru.draimdev.dmlibspigot.Config.ConfigManager
 import ru.draimdev.dmlibspigot.Config.configuration.Lang
 import ru.draimdev.dmlibspigot.Config.configuration.Settings
 import ru.draimdev.dmlibspigot.Config.configuration.SoundType
 import ru.draimdev.dmlibspigot.Config.configuration.TitleType
 import ru.draimdev.dmlibspigot.Events.StartupEvent
+import ru.draimdev.dmlibspigot.GUI.GUIListeners
 import ru.draimdev.dmlibspigot.GUI.GUIManagers
+import ru.draimdev.dmlibspigot.Player.PlayerListeners
 import ru.draimdev.dmlibspigot.Player.PlayerQuery
 
 class DMLIBSpigot : JavaPlugin() {
@@ -38,6 +41,7 @@ class DMLIBSpigot : JavaPlugin() {
         setupConfig()
         setupDatabase()
         setupManagers()
+        setupListeners()
     }
 
     private fun setupAdventure() {
@@ -61,5 +65,11 @@ class DMLIBSpigot : JavaPlugin() {
 
     private fun setupManagers() {
         guiManager = GUIManagers()
+    }
+
+    private fun setupListeners() {
+        val pluginManager = Bukkit.getPluginManager()
+        pluginManager.registerEvents(GUIListeners(this, guiManager), this)
+        pluginManager.registerEvents(PlayerListeners(this, playerQuery), this)
     }
 }
