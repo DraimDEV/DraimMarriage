@@ -234,7 +234,12 @@ class ConfigManager(private val pl: JavaPlugin, private val fileName: String) {
             if (config.isSet("$path.lore")) {
                 getStringList("$path.lore").forEach { lore.add(Component.text(it)) }
             }
-            val head: ItemStack = ItemBuilder() // TODO: Мне кажется чего-то не хватает
+            val head: ItemStack = ItemBuilder(XMaterial.PLAYER_HEAD)
+                .withName(name)
+                .withAmount(amount)
+                .withLore(lore)
+                .withOwner(owner)
+                .create()
             if (config.isSet("$path.enchantments")) {
                 head.addEnchantments(getEnchantments("$path.enchantments"))
             }
@@ -243,6 +248,8 @@ class ConfigManager(private val pl: JavaPlugin, private val fileName: String) {
         pathNotFound(path)
         return ItemStack(Material.STONE)
     }
+
+
 
 
 
