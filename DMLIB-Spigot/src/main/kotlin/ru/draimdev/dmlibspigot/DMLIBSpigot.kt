@@ -42,6 +42,9 @@ class DMLIBSpigot : JavaPlugin() {
         setupDatabase()
         setupManagers()
         setupListeners()
+        if (Settings.VAULT) {
+            setupVault()
+        }
     }
 
     private fun setupAdventure() {
@@ -71,5 +74,23 @@ class DMLIBSpigot : JavaPlugin() {
         val pluginManager = Bukkit.getPluginManager()
         pluginManager.registerEvents(GUIListeners(this, guiManager), this)
         pluginManager.registerEvents(PlayerListeners(this, playerQuery), this)
+    }
+
+    private fun setupVault() {
+        if (!setupVaultEconomy()) {
+            logger.severe("Не найден Vault! Сервер отключеается.")
+            server.pluginManager.disablePlugin(this)
+        }
+    }
+
+    private fun setupVaultEconomy() : Boolean {
+        if (server.pluginManager.getPlugin("Vault") != null) {
+            val rsp = server.servicesManager.getRegistration(Economy::class.java)
+            if (rsp != null) {
+                vaultEcon = rsp.provider
+                return true
+            }
+        }
+        return false
     }
 }
