@@ -6,7 +6,7 @@ import ru.draimdev.dmlibspigot.GUI.events.GUIOpenEvent
 import ru.draimdev.dmlibspigot.Player.isPlayer
 import java.util.*
 
-class GUIManager {
+class GUIManagers {
     val guis = HashMap<UUID, GUI>()
 
     fun open(player: Player, gui: GUI) {
